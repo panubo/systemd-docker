@@ -110,7 +110,7 @@ func parseContext(args []string) (*Context, error) {
 			add = false
 		case arg == "-d" || arg == "-detach" || arg == "--detach":
 			foundD = true
-		case strings.HasPrefix(arg, "-name") || strings.HasPrefix(arg, "--name"):
+		case len(name) == 0 && (strings.HasPrefix(arg, "-name") || strings.HasPrefix(arg, "--name")):
 			if strings.Contains(arg, "=") {
 				name = strings.SplitN(arg, "=", 2)[1]
 			} else if len(runArgs) > i+1 {
